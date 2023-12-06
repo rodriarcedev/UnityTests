@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class Map 
@@ -11,17 +12,27 @@ public class Map
     public int NumberOfColumns { get => cells.GetLength(columnDimension);}
     public int NumberOfRows { get => cells.GetLength(rowDimension);}
 
-    private readonly int[,] cells;
+    private readonly Hero[,] cells;
 
 
     public Map(int width, int height)
     {
-        cells = new int[width, height];
+        cells = new Hero[width, height];
 
         //NumberOfColumns = width;
         //NumberOfRows = height;
     }
 
+    public void AddHero(int positionX, int positionY, Hero hero)
+    {
+        cells[positionX, positionY] = hero;
+    }
+
+    public bool ContainsHero(int positionX, int positionY)
+    {
+        return cells[positionX, positionY] != null;
+    }
+
     // Start is called before the first frame update
-  
+
 }
