@@ -7,6 +7,10 @@ using NSubstitute;
 
 public class PlayerMovementTest
 {
+
+
+    
+
    
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
     // `yield return null;` to skip a frame.
@@ -18,7 +22,7 @@ public class PlayerMovementTest
       var player =  playerObject.AddComponent<Player>();
         player.PlayerInput = Substitute.For<IPlayerInput>();
         player.PlayerInput.Vertical.Returns(1f);
-       
+     
        
 
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -27,14 +31,18 @@ public class PlayerMovementTest
         cube.transform.localPosition = Vector3.zero;
         player.transform.position = Vector3.zero;
 
+        yield return new WaitForSecondsRealtime(0.1f);
+        float xPos = player.transform.position.x;
+        float yPos = player.transform.position.y;
+
         //player.PlayerInput = Substitu
 
         // Use the Assert class to test conditions.
         // Use yield to skip a frame.
-        yield return new WaitForSecondsRealtime(50f); // Coroutine looping
+        yield return new WaitForSecondsRealtime(2f); // Coroutine looping
         Assert.IsTrue(player.transform.position.z > 0f);
-        Assert.AreEqual(0, player.transform.position.y);
-        Assert.AreEqual(0, player.transform.position.x);
+        Assert.AreEqual(xPos, player.transform.position.y);
+        Assert.AreEqual(yPos, player.transform.position.x);
 
     }
 }

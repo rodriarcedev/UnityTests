@@ -4,26 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(Rigidbody))]
+
 public class Player : MonoBehaviour
 {
 
-    private Rigidbody rbPlayer;
+
     public IPlayerInput PlayerInput { get;
         set;
     }
 
     private void Awake()
     {
-        rbPlayer = GetComponent<Rigidbody>();
+       
     }
 
     private void Update()
     {
-        float vertical = PlayerInput.Vertical;
-        rbPlayer.useGravity = false;
+        float vertical = PlayerInput.Vertical;      
+         
         float moveSpeed = 0.5f;
-        rbPlayer.velocity = Vector3.forward * moveSpeed;
+        transform.Translate(transform.forward * PlayerInput.Vertical * 2f * Time.deltaTime);
 
     }
 }
