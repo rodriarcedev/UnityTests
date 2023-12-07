@@ -18,7 +18,7 @@ public class MapTest
         //var width = 5;
         //var height = 2;
 
-        var map = new Map(width, height);
+        var map = MapFactory.AMap().WithHeight(height).WithWidth(width).Build();
 
 
         // Act 
@@ -35,7 +35,7 @@ public class MapTest
 
         //Arrange
 
-        var map = new Map(20, 20);
+        var map = MapFactory.AMap().WithHeight(20).WithWidth(20).Build();
 
         var hero = new Hero();
 
@@ -60,7 +60,7 @@ public class MapTest
     {
         // Arrange
 
-        var map = new Map(20, 20);
+        var map = MapFactory.AMap().WithHeight(20).WithWidth(20).Build();
 
         var hero = new Hero();
         map.AddHero(5, 5, hero);
@@ -74,6 +74,17 @@ public class MapTest
             map.AddHero(5, 5, hero2);
         });
 
+    }
+
+
+    [Test]
+    public void WhenRemoveAHero_ThenRemoveItFromTheCells()
+    {
+        var map = MapFactory.AMap().WithHeight(5).WithWidth(5).Build();
+
+        Assert.IsTrue(map.ContainsHero(2, 4));
+        map.RemoveHero(2, 4);
+       Assert.IsFalse(map.ContainsHero(2, 4));
     }
 
 

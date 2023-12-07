@@ -25,12 +25,23 @@ public class Map
 
     public void AddHero(int positionX, int positionY, Hero hero)
     {
+
+        if (ContainsHero(positionX, positionY))
+        {
+            throw new Exception("Contains Hero");
+        }
+
         cells[positionX, positionY] = hero;
     }
 
     public bool ContainsHero(int positionX, int positionY)
     {
         return cells[positionX, positionY] != null;
+    }
+
+    public void RemoveHero(int positionX, int positionY)
+    {
+        cells[positionX, positionY] = null;
     }
 
     // Start is called before the first frame update
