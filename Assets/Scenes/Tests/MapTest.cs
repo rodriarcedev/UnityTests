@@ -42,7 +42,7 @@ public class MapTest
         var heroPositionX = 10;
         var heroPositionY = 10;
 
-        map.AddHero(heroPositionX, heroPositionY, hero);
+        map.AddHero(hero, heroPositionX, heroPositionY);
 
         //Act
 
@@ -63,7 +63,7 @@ public class MapTest
         var map = MapFactory.AMap().WithHeight(20).WithWidth(20).Build();
 
         var hero = new Hero();
-        map.AddHero(5, 5, hero);
+        map.AddHero(hero, 5, 5);
         var hero2 = new Hero();
         //Act
        
@@ -71,7 +71,7 @@ public class MapTest
         //Asserts
         Assert.Throws<Exception>(() => {
 
-            map.AddHero(5, 5, hero2);
+            map.AddHero(hero2, 5, 5);
         });
 
     }

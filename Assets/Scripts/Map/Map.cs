@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Map 
 {
@@ -23,7 +24,7 @@ public class Map
         //NumberOfRows = height;
     }
 
-    public void AddHero(int positionX, int positionY, Hero hero)
+    public void AddHero(Hero hero,int positionX, int positionY)
     {
 
         if (ContainsHero(positionX, positionY))

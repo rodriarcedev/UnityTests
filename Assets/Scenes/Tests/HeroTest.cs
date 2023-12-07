@@ -1,44 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
 
-public class HeroTest
+public class HeroTest 
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void WhenMove_ThenUpdateThePositionInTheMap()
+    [TestCase(0, 1)]
+    [TestCase(7, 4)]
+    public void WhenSetPosition_ThenSetIt(int positionX, int positionY)
     {
-
-        //Arrange
-        Map map = new Map(10, 10);
         var hero = new Hero();
-        map.AddHero(5, 5, hero);
+        hero.SetPosition(positionX, positionY);
 
-        var heroMovement = new HeroMovement();
-
-
-        //Act
-        heroMovement.Move(hero, map, Directions.Right);
-
-
-
-
-
-        //Assert
-        Assert.IsTrue(map.ContainsHero(6, 5), "The Hero Dosen't move to the Right");
-
-
-
-
-        //Assert.IsTrue(map.a)
-        // Use the Assert class to test conditions
+        Assert.AreEqual(positionX, hero.PositionX);
+        Assert.AreEqual(positionY, hero.PositionY);
     }
 
-
-
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
  
 }
